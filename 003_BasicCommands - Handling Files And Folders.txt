@@ -236,68 +236,90 @@ c)  to remove  both  files  and  directories  without  confirmation
 ########################
 ###10) Linking  Files###
 *********************************************************************************************
+Notes SoftLinks 
+***************
+a)soft links can link across file system directories.
+b)soft links can use different inode numbers
+c)in soft link if main file is deleted all the links are collasped
+d)soft link can be created on file and directory 
+Notes HardLinks 
+***************    
+a)hard links cannot link across different file system directories.
+b)hard link will use same inode numbers
+c)in hard link if main file is deleted than also we can have the data until the last link.
+d)hard link can be created only on file but not on directory.
+
 a)Soft links(like  short cut  link in  windows)
-************
+***********************************************
+#pwd
+/root
 #cat > soft
  this  is  my  file
 ctrl d  (  to  save  file)
 
 #ln  -s soft  soft1(to  create soft link)
-#ls  -l(to  chk soft  link)
-#ls  -i(to chk  inode number)
+#ll  -ai(to  chk soft  link + inode number)
+2922504 -rw-r--r--.  1 root root   11 Jan 20 01:57 soft
+2922505 lrwxrwxrwx.  1 root root    4 Jan 20 01:58 soft1 -> soft
+
 #cat soft1
 
 #ln -s  soft  /home/soft2(if  we create the soft link by giving path,it does not create soft link properly, we can't read soft link path)
-ex# ls /home
-  # cat /home/soft2 
-to  create  soft  link in /home we need to go  there and create it
+ex# ls  /home
+  cat soft2   
+  cat: soft2: No such file or directory
+#ll  -ai(to  chk)
+2911277 lrwxrwxrwx.  1 root root   4 Jan 20 02:01 soft2 -> soft          <---------invalid linking, its not linked properly to /root/a/soft
 
-
+to create soft link in /home we need to go  there and create it
 #cd  /home
-#ln  -s  /root/soft  sl1(new name)
-#ls  -l(to  chk)
+#ln  -s  /root/soft  soft3(new name)
+#ll  -ai(to  chk)
+2911277 lrwxrwxrwx.  1 root root   4 Jan 20 02:01 soft2 -> soft          <---------invalid linking
+2919986 lrwxrwxrwx.  1 root root  12 Jan 20 02:04 soft3 -> /root/a/soft
+cat soft3
 
 #cd  /
-#ln -s   /root/soft  sl2(soft  link  in /)
-#ls  -l  sl1(to  chk)
-#cat >> sl2
-this  is  my  data
+#ln -s   /root/soft  soft4(soft  link  in /)
+#ls  -l  soft4(to  chk)
+#cat >> soft4
+   this  is  my  data
 ctrl  d(to  save)
-#cat  /home/sl1
-#cd
-#ls -i /sl1(to chk inode number)
-#ls -i /sl2(to chk inode number)
-#rm  -rf  soft(remove  original  file)
-#cat  soft1
-#cat  /home/sl1
-#cat  /sl2
 
-NOTE:soft  link  can  be  created  on both  file  and  directory
-     but  hard  link  can  be  created  on file only but not on  directory)
+all below will reflect new data
+#cat  /root/soft
+#cat  /root/soft1
+#cat  /home/soft3
+
+
+#rm  -rf  /root/soft(remove  original  file, this makes all soft link broken)
+#cat  soft1
+#cat  /home/soft2
+#cat  /soft4
+ 
 	 
-	 
-b)Hard  link
+b)Hard  links
 *************
+#pwd
+/root
 #cat > hard
   this  is  hard  link file
 ctrl  d(to save  file)
 
 to  create  hard link(we  can create hard  link only in same directory but  not  in  other  directory)
-#ln  hard  hl1
+#ln  hard  hard1
 #ls
 #mkdir  d2
-#ln  hard  d2/hl2
+#ln  hard  d2/hard2 (we  can,t  hard link in  other location)
+ln: failed to create hard link '/d2/hard2' => 'hard': No such file or directory
+
 #ls  -i hard(inode number)
+34803339 -rw-r--r--. 2 root root 16 Jan 20 02:18 hard
 #ls  -i hl1 (inode number)
-#ls  -i d2/hl2(inode number)
-
-
-#cd  /home
-#ln  /root/hard  hl3(we  can,t  hard link in  other location)
+34803339 -rw-r--r--. 2 root root 16 Jan 20 02:18 hard1
 
 #cd
 #rm -rf  hard(remove original)
 #cat  hl1(we  can  read)
-#cat  d2/hl2
 
-Note:hard  link  can  be  created  on file only but  not on  directory
+
