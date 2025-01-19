@@ -178,5 +178,16 @@ yum install	vlock* -y
 25) to make text bold
 ============================================================
 	#tput bold 
-	#tput reset 	
+	#tput reset 
+
+26) uname
+============================================================
+#uname  -a(it  shows o/s name,sys name,release,version,machine architecture,hardware architecture)
+#uname -r(release)
+#uname -v(version)
+#uname -m(machine architecture)
+#uname -i(hardware platform)
+#uname -p(processor architecture)
+#uname -s(kernel name)
+#uname -o(operating system name)	
 		
