@@ -1,0 +1,295 @@
+##########################################################################################################################
+##########################################################################################################################
+###Handling Files And Folders
+##########################################################################################################################
+###Cat Command###
+*********************************************************************************************
+Note .(a single dot) - this represents the current directory
+1)  cat
+ a)  create   the  new  file
+  #  cat  > redhat
+  this is the root  file
+  to save  the file -> press  Ctrl  d
+  to  chk the  file -> #ls   or  #ll
+ b)  to read  the  file
+  #cat  redhat
+ c)  to append  the file
+  #cat  >>  redhat
+  this is created on wednesday
+  
+  to save file ->press  Ctrl  d
+  to chk  the result
+  #cat  redhat
+  #cat -n redhat(to read file with line number)
+  **************
+ d)output redirection
+ #cat  redhat > blackhat(new file will be created)
+ #cat  blackhat
+ e)to redirect multiple files data into another file
+ #cat > orangehat
+ this  is  orangehat
+ ctrl d (to  save  file)
+ #cat redhat orangehat > yellowhat
+ #cat  yellowhat(to  check)
+ #cat  -n  yellowhat(to  see  with  line numbers)
+
+################### 
+###Touch Command###
+*********************************************************************************************
+  
+2) touch
+ a)  to create  single  file
+  # touch  banjarahills
+  to  chk
+  #ls
+ b)  to create  multiple files
+  #touch  ccna  linux  vmware
+  to  chk
+  #ls
+ c) another  method
+ #touch  hyd{1..8}
+ #touch  hyd{a..d}
+  to chk
+ # ls	
+
+################
+###VI Command###
+*********************************************************************************************
+3) vi
+
+Command  mode 
+key    Task(function)
+dd        delete a  line
+ndd       to  delete multiple line(n=number of lines) 
+ex  2dd   to  delete  2  line
+yy        copy a  single  line
+nyy       to  copy  multiple lines(n=number of lines)
+ex 3yy    to copy    3  line
+p         to paste  
+u         to undo
+ctrl r    to  redo
+G         to go to last line
+/(word to find)    to search  a  word
+
+Extended  mode
+Key     Task(function)
+:q    to  quit  without  saving
+:q!    to  quit forcefully without  saving
+:w     to  write(save)
+:wq     to  save and  quit
+:wq!     to  save and  quit forcefully
+:se nu    to  set  line  numbers
+:se  nonu   to  remove  line  numbers
+:1,$s/old name/new name    to  replace the  word name
+
+################################
+###Absolute And Relative Path###
+*********************************************************************************************
+Absolute Path-name
+An absolute path is defined as the specifying the location 
+of a file or directory from the root directory(/).
+example
+#touch  /home/apple
+#ls  /home
+#touch f1 f2 f3 
+#ls
+
+Relative path
+Relative path is defined as the path related to the present working directory(pwd). 
+It starts at your current directory and never starts with a / 
+example
+#touch f1 f2 f3 
+#ls
+
+###################
+###Mkdir Command###
+*********************************************************************************************
+creation of  directory(folder)
+    a)   single  directory(folder)
+    #mkdir  zoom
+    to  chk -> #ls   or  #ll
+    b)   multiple  dirctories (folders)
+    #mkdir  mcse   hardware  firewall  cisco
+    to  chk  ->#ls
+    b) another  method
+    #mkdir  india{1..9}
+    #mkdir  india{a..e}
+    to chk ->#ls
+    c) parental   directory
+    #mkdir   -p   a/b/c/d/e
+    to  chk ->#ls  -R    a
+
+to enter into  c  directory
+    #cd a/b/c
+    to chk
+    #pwd
+to go next  directory
+    #cd  d
+to  move  two  steps backward
+    #cd   ../..
+to come  out  from  directory  to user home directory
+    #cd
+to  go to last  working  directory
+    #cd   -
+to come out  
+    #cd
+################
+###Li Command###
+*********************************************************************************************
+ls(Lists)
+#ls
+#ls  -a(to  check  all)
+#ls  -m(to  see files and directories with comma)
+#ls  -Q(to  see files and directories with quotation)
+#ls  -r(reverse order)
+#ls  -t(to  see  most modified time files  and  directories)
+#ls  -s(to  chk  size)
+#ls  -sh or #ls  -shr(to  chk size human understable)
+#ls  -i(to  chk files and directories with inode number)
+Note:Inode number  is  used by   kernel to understand
+files and  directories because kernel does  not understand
+human language name
+
+#uname  -a(it  shows o/s name,sys name,release,version,
+machine architecture,hardware architecture)
+#uname -r(release)
+#uname -v(version)
+#uname -m(machine architecture)
+#uname -i(hardware platform)
+#uname -p(processor architecture)
+#uname -s(kernel name)
+#uname -o(operating system name)
+
+########## 
+###COPY###
+*********************************************************************************************
+Note .(a single dot) - this represents the current directory
+a)  copy  file(old  file)   into  file(new  file)
+   #cp  -rv  redhat(source)         centos(destination)
+    to  chk
+    #ls
+    #cat  redhat(to  read  the  file)
+    #cat  centos
+   #cp  -rv  redhat  /home(to copy  file in /home)
+   #ls  /home
+   #touch  /home/apple(new  file in home)
+   #cp -rv  /home/apple  .(to copy  file from  /home to present director)
+   #cp  -rv  *  /(to  copy all files and directories  into  /)
+
+b)  copy  file  into  directory
+    #cp  -rv  redhat(filename)   zoom(directoryname)
+ to  chk
+   #cd  zoom(to enter  into directory)
+   #ls      (to chk the  filename)
+   #cat  redhat(to read  the file)
+   #cd   (to come out from  directory)
+another  method
+   #ls   zoom( to chk filename inside  directory)
+   #cat  zoom/redhat( to read the file which is inside the directory)
+c)  copy  file (old)  into  another file(exiting file)  without overwrite
+     #cat  > unix
+    this is unix file
+     to save  the file
+    press  Ctrl  d
+  #cp  -rv   redhat (old file)   unix(existing file)
+           n
+   #cat    redhat  >>  unix
+    to chk  result
+   #cat  unix
+
+#######################  
+###RENAMING / MOVING###
+********************************************************************************************* 
+  a)file
+    #mv   redhat(old name)    bluehat(new name)
+    to chk
+    #ls
+   b) directory
+    #mv   zoom(old  name)     moon(new  name)
+    to chk
+    #ls 
+	
+########################
+###REMOVING(DELETING)###
+********************************************************************************************* 
+   a)   file
+       #rm  bluehat
+       give  y(yes)
+     to chk
+    #ls
+   b)    directory
+       #rm  -r  moon
+      give  y
+   to chk
+   #ls
+ to remove  both  files  and  directories  without  confirmation
+   #rm  -rf   hy*  in*  mcse  linux
+   to  chk
+   #ls
+
+   
+####################
+###Linking  Files###
+*********************************************************************************************
+a)Soft links(like  short cut  link in  windows)
+************
+#cat > soft
+this  is  my  file
+Ctrl d  (  to  save  file)
+#ln  -s soft  soft1(to  create soft link)
+#ls  -l(to  chk soft  link)
+#ls  -i(to chk  inode number)
+#cat soft1
+
+#ln -s  soft  /home/soft2(if  we create the soft link by giving path,
+it does not create soft link properly, we can't read soft link path,
+ex#ls /home
+#cat /home/soft2)
+
+to  create  soft  link in /home we need  to  go  there and create it
+#cd  /home
+#ln  -s  /root/soft  sl1(new name)
+#ls  -l(to  chk)
+#cd  /
+#ln -s   /root/soft  sl2(soft  link  in /)
+#ls  -l  sl1(to  chk)
+#cat >> sl2
+this  is  my  data
+ctrl  d(to  save)
+#cat  /home/sl1
+#cd
+#ls -i /sl1(to chk inode number)
+#ls -i /sl2(to chk inode number)
+#rm  -rf  soft(remove  original  file)
+#cat  soft1
+#cat  /home/sl1
+#cat  /sl2
+
+NOTE:soft  link  can  be  created  on both  file  and  directory
+(but  hard  link  can  be  created  on file only but  not on  directory)
+b)Hard  link
+*************
+#cat > hard
+this  is  hard  link file
+ctrl  d(to save  file)
+
+to  create  hard link(we  can create hard  link only in same directory
+but  not  in  other  directory)
+#ln  hard  hl1
+#ls
+#mkdir  d2
+#ln  hard  d2/hl2
+#ls  -i hard(inode number)
+#ls -i hl1(inode number)
+#ls  -i d2/hl2(inode number)
+
+
+#cd  /home
+#ln  /root/hard  hl3(we  can,t  hard link in  other location)
+
+#cd
+#rm -rf  hard(remove original)
+#cat  hl1(we  can  read)
+#cat  d2/hl2
+
+Note:hard  link  can  be  created  on file only but  not on  directory

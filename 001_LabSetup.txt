@@ -1,0 +1,52 @@
+CentOS 8 Link: 
+http://mirrors.nxtgen.com/centos-mirror/8-stream/isos/x86_64/
+Select: CentOS-Stream-8-x86_64-latest-dvd1.iso
+
+For  vmware  17
+https://www.vmware.com/uk/products/workstation-pro/workstation-pro-evaluation.html
+
+VMWARE workstation pro-17 keys
+MC60H-DWHD5-H80U9-6V85M-8280D 
+
+for  operating  system
+
+http://centos-hcm.viettelidc.com.vn/7.9.2009/isos/x86_64/
+
+(4.4gb size)
+
+
+for  vmware 15
+
+https://drive.google.com/file/d/1iCwhCbFFL4QIUrVOWeMJ707HBkgH9OMn/view?usp=sharing
+  
+keys
+YY31H-6EYEJ-480VZ-VXXZC-QF2E0
+ZG51K-25FE1-H81ZP-95XGT-WV2C0
+CU7J2-4KG8J-489TY-X6XGX-MAUX2
+
+For  vmware  16 
+
+https://www.vmware.com/uk/products/workstation-pro/workstation-pro-evaluation.html
+
+Key 
+ZF3R0-FHED2-M80TY-8QYGC-NPKYF
+
+for  operating  system
+
+http://centos-hcm.viettelidc.com.vn/7.9.2009/isos/x86_64/
+
+(4.4gb size)
+
+https://drive.google.com/drive/folders/17pUyrKxPFasOnPeWZ5aiWSNOrWcDbu49?usp=sharin
+
+
+for  operating  system
+
+http://centos.mirror.snu.edu.in/centos/7.9.2009/isos/x86_64/
+
+http://centos-hcm.viettelidc.com.vn/7.9.2009/isos/x86_64/(4.3gb size)
+
+http://mirror.myfahim.com/centos/7.8.2003/isos/x86_64/
+http://mirror.vanehost.com/centos/7.8.2003/isos/x86_64/
+
+ www.getintopc.com(for  all software)

@@ -1,0 +1,182 @@
+##########################################################################################################################
+##########################################################################################################################
+###Basic  Commands
+##########################################################################################################################
+01) to  login  as  root (administrator) user (in rhel 7)
+============================================================
+    click   on  not  listed 
+      username     root
+      password     redhat
+
+02) to open  the terminal
+============================================================
+    a)  right click  then  click on  open in terminal
+    b)  click  on application  then  on  terminal
+    c)  press  Alt  F2  then  write  gnome-terminal
+  
+03) to increase  size  of  terminal
+============================================================
+    press ctrl  shift  +
+
+04) to decrease  size  of  terminal
+============================================================
+    press  ctrl  -
+
+05) to  get  full screen
+============================================================
+    press  F11
+
+06) to clear  the  screen
+============================================================
+    #clear or  press Ctrl  l
+
+07) to login  as  multiple  user using  virtual console
+============================================================
+    Note : we have  by default  six  virtual console,
+       only  one  will work in graphical  mode
+                press  Alt  Ctrl   F1(graphical  mode)
+       remaining  five  will work  in text  mode
+				press  Alt  Ctrl   F2  to  F6(text  mode)
+				we can config up to 64 
+       change virtual termal command 
+	   -----------------------------
+	   chvt 5  ---> Alt  Ctrl   F6 
+	   
+	   tele-terminal type or tty ->help to know in which terminal i am currently using 
+	   -------------------------------------------------------------------------------
+	   #tty
+	   /dev/tty5
+08) login prompt  information
+============================================================
+    [root@localhost~]#
+ where  root= username(which user has  login)
+        localhost=systemname
+         ~ = login user home directory symbol
+         # = privilege   of  root  user
+     note a)   # indicate  max  access(privilege)
+			   # sign  access  will appear only  for root user   
+     note b) Except  root  user, for  all other user we  get  $  symbol
+               $  sign  indicate  min  (limited  access)
+09) to chk user working  directory
+============================================================
+      #pwd  
+   where  pwd  stands for print the user working  directory
+   
+   Note:  if  we  want  to know  description of  any command
+          we  have  the  help and  for  help we  have  to use #man
+   for  ex  #man   pwd
+            to come  out  from  help press  q
+
+10) to change  the  working directory
+============================================================
+    #cd    where  cd  stand for  change  directory
+    ex  #cd   /boot
+
+11) to chk the  content  in any  directory
+============================================================
+       #ls   where   ls stand for lists
+       #ls   /var
+
+12) to  chk  root  user  data
+============================================================
+    #cd  
+    #ls
+ Note   a)  directory(text)  colour  is blue
+        b)  file(text) colour  is  black
+
+13) to  hide  the  colour  of  file  and  directory
+============================================================
+    #\ls
+
+14) to chk  the  properties  of  files  and  directories
+============================================================
+    #ll (where ll is long  lists)
+      or
+    #ls   -l
+ note a) for  directory : The first  character  will be  d
+      b) for  file      : the first  character  will be  - 
+
+15) to chk  hidden  files  and  directories
+============================================================
+    #ls   -a
+
+16) to  chk  the  date  of  the  machine
+============================================================
+    #date
+	
+	To set date ->MMddhhmmYYYY.SS
+	
+	#date 010510502025.30
+	#date 
+	Sun Jan 5  10:50:30 IST 2025
+	 
+
+17) to  chk  the calender
+============================================================
+    #cal (for  present  month)
+    #cal  2018(for  whole  year)
+
+18) to chk  kernel  version
+============================================================
+
+    architecture 
+	------------
+	#uname -m
+	#uname -p 
+	#uname -l 
+	#arch            x86_64
+	
+	systemname
+	----------
+	#uname -n
+	#hostname        
+	
+	
+    operating system 
+	-----------------
+    #uname -o        
+	#uname -m 
+	#uname -n 
+	
+	kernal
+	------
+    #uname   -a      ---->     [Linux/Unix SystemName  Kernam dateNTime Arch OS]
+      or  
+	#ls /boot
+
+19) to chk  cpu detail
+============================================================
+    #lscpu
+
+20) to  chk   operating  system  version
+============================================================
+    #cat /etc/redhat-release
+      or 
+	#cat  /etc/centos-release
+
+21) to search  files  and  directories
+============================================================
+    #find  /  -name  Desktop (file  or  directory name)
+
+22) to  restart  the  machine
+============================================================
+    #init  6   or  #reboot
+
+23) to  shutdown  the  machine
+============================================================
+    #init  0  or #poweroff  or #shutdown
+	
+	puweroff -f now  --> all running application will abrutely closed
+	
+24) to lock system
+============================================================
+yum install	vlock* -y
+
+	#vlock                lock current terminal 
+	#vlock -a             locks all terminal 
+
+25) to make text bold
+============================================================
+	#tput bold 
+	#tput reset 	
+		
