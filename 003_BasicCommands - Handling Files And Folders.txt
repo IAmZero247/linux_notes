@@ -320,6 +320,6 @@ ln: failed to create hard link '/d2/hard2' => 'hard': No such file or directory
 
 #cd
 #rm -rf  hard(remove original)
-#cat  hl1(we  can  read)
+#cat  hard1(we  can  read)
 
 
