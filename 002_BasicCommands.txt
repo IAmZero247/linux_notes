@@ -189,5 +189,23 @@ yum install	vlock* -y
 #uname -i(hardware platform)
 #uname -p(processor architecture)
 #uname -s(kernel name)
-#uname -o(operating system name)	
-		
+#uname -o(operating system name)
+
+26) History
+============================================================
+#history
+
+	setting
+	vim /etc/profile  -> HISTSIZE=1000 
+
+ to clear
+#history -c
+
+27) Execute last command	
+============================================================
+!! 
+
+28) Multiple command 
+============================================================
+#ls && date123 && cal   ->cal wont execute because date123 fails
+#ls ; date123 ; cal     ->cal will execute irrespective of date123 failure

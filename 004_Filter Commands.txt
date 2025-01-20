@@ -1,0 +1,132 @@
+##########################################################################################################################
+##########################################################################################################################
+###Filter  commands
+##########################################################################################################################
+
+
+Examples
+#cat  /etc/passwd (to  see  data of  file)
+#cat  -n  /etc/passwd(to  see  data of  file with line number)
+Note:if  we  are  working in cmd mode,we can't  move up and down
+then  we  can  use filter commands  like  more,less)
+##########################################################################################################################
+
+1)more
+****************************************************
+#more  /etc/passwd(press  enter  to  see  data of  file line  by  line)
+#ps  -e(to  see  every  process in  server)
+#ps  -e |more (to  see  process from  begining onwards by  using enter  enter  enter,to  quit,  use  q)
+Note: |(pipe)  symbol is  used  to  execute more than one command.
+****************************************************
+
+2)less
+****************************************************
+#less  /etc/passwd(to  see  data page wise by using pagedown and pageup key,we  can  use  q, to  quit)
+****************************************************
+
+3)sort
+****************************************************
+#sort  /etc/passwd(it sort in ascending order)
+#sort  -r /etc/passwd(it  sort  in  descending order)
+****************************************************
+
+4)wc(word  count)
+****************************************************
+#wc -l  /etc/passwd (to know total number of  lines)
+#wc -w  /etc/passwd (to know total number of  words)
+#wc -c  /etc/passwd (to  know  character)
+#wc  /etc/passwd(to  see  number  of  lines,word,charcter at a  time,together)
+
+
+we can use wc with  other linux command
+#ls |wc -l (to  count how many files  and  directories)
+#ps -e |wc -l(to know  total  number of  processor running)
+****************************************************
+
+5)head
+****************************************************
+#head  /etc/passwd ( to see first  10 lines in file)
+#head  -3  /etc/passwd (to  see first  3  lines)
+
+6)tail
+****************************************************
+#tail   /etc/passwd ( to see last  10 lines in file)
+#tail -5  /etc/passwd( to see last 5 lines in file)
+
+##########################################################################################################################
+7)sed
+1Tools such as head and tail allow us to view the bottom or the top of a file. What if we need to view a section in the middle? 
+The following sed one-liner will return lines 5 through 10 line from /etc/passwd
+# sed -n '5,10l' /etc/passwd
+
+
+##########################################################################################################################
+##########################################################################################################################
+###Advance   Filter  Commands [locate, find  and grep]
+##########################################################################################################################
+##########################################################################################################################
+1) locate
+****************************************************
+#locate passwd
+search and list all with files n directory which obeys this
+
+#locate /etc/passwd
+/etc/passwd
+/etc/passwd-
+****************************************************
+2)find [name, permission, size]
+****************************************************
+
+#find  .  -name  f1(to  search f1  file or directory in present working  directory)
+#find  /  -name  f1(to  search f1  file or directory in all(any)  location(directories))
+#find  /  -name  Desktop(to  chk  with  sensitive)
+#find  /  -iname desktop(to  avoid case  sensitive)
+
+
+#find / -name passwd
+/sys/fs/selinux/class/passwd
+/sys/fs/selinux/class/passwd/perms/passwd
+/etc/passwd
+/etc/pam.d/passwd
+/usr/bin/passwd
+/usr/share/licenses/passwd
+/usr/share/doc/passwd
+/usr/share/bash-completion/completions/passwd
+
+
+#pwd
+/root
+(below is type enabled search for files)
+#find  . -type  f  -perm  777(to chk 777  permission of  file in present  location)
+#find  . -type  f  -perm  666(to chk 666  permission of  file in present  location)
+#find  / -type  f  -perm  777(to chk 777  permission of  file in any  location)
+#find  / -type  f  -perm  666(to chk 666  permission of  file in any  location)
+#find  . -type  f  ! -perm  666(to chk all  files except 666  permission  of  file in present  location)
+#find  /root  -type f  -empty (to  find  empty  file)  
+#find  /root  -perm  /a=x(to  find  executable file)
+#find  /root  -perm  /u=r(to  find  read only file)
+
+#find /etc -size  +15M          ----------> all files above 15Mb
+#find /etc -size  -15M          ----------> all files below 15mB
+
+****************************************************
+2)grep (used  to  search  or  filter the  pattern within  file)
+****************************************************
+  
+#grep  root  /etc/passwd (it  display where root word is  there)
+#grep  --color root /etc/passwd(to highlight  word  with colour)
+#grep  -i root /etc/passwd (to  avoid case  sensitive)
+
+#grep  -nA2  ftp /etc/passwd(next after 2  line after ftp  word)
+#grep  -nB2  ftp /etc/passwd(before 2  line after ftp  word)
+
+#touch  orange  orange1  orange2 orange3
+#ls |grep  orange
+
+#ps  -e
+#ps  -e  |grep bash
+
+#rpm -qa (to chk how  many  package  installed)
+#rpm -qa |grep  zsh(to chk particular package is  installed  or  not)
+
+		
