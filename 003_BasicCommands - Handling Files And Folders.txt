@@ -3,7 +3,7 @@
 ###Handling Files And Folders
 
 man hier - desc of file system heirarchy
-========
+========================================
 /boot    	all the boot related files to boot up system 
 
 /bin     	essential-commands/binaries executed by normaluser + root
@@ -28,14 +28,14 @@ man hier - desc of file system heirarchy
 /proc    	virtual filesystem providing process and kernel information
 /var     	store dynamic data, such as caches, log files, and files generated during software operation
 
-/lost+found when the system crashes unexpectedly or shuts down unexpectedly, some file fragments will be stored here.
-			During system startup, the fsck tool will check this directory and repair the damaged file system. 
+/lost+found     when the system crashes unexpectedly or shuts down unexpectedly, some file fragments will be stored here.during system startup, 
+the fsck tool will check this directory and repair the damaged file system. 
 			
 			
 			
 			
 			
-. present working directory 
+.  present working directory 
 .. parent of present working directory 
 
 to see size of file or directory 
@@ -52,7 +52,6 @@ du -s /etc
 ##########################################################################################################################
 ###1) Cat Command###
 *********************************************************************************************
-Note .(a single dot) - this represents the current directory
 a)create   the  new  file
   #cat  > redhat
   this is the root  file
@@ -115,10 +114,7 @@ e ) cat >> abc
 	
 verify 
 cat -n abc	
-
-
-
-	ctrl +d    
+   
 
 #######################
 ###3) VI/VIM Command###
@@ -301,7 +297,7 @@ b)  copy  file  into  directory
    #ls      (to chk the  filename)
    #cat  redhat(to read  the file)
    #cd ..  (to come out from  directory)
-another  method
+    another  method
    #ls   zoom( to chk filename inside  directory)
    #cat  zoom/redhat( to read the file which is inside the directory)
    
@@ -310,8 +306,8 @@ c)  copy  file (old)  into  another file(exiting file)  without overwrite
   #cat  > unix
      this is unix file
     
-	to save  the file
-    press  Ctrl  d
+  to save  the file
+    press  ctrl  d
   #cp  -rv   redhat (old file)   unix(existing file)
            n
   #cat redhat  >>  unix
@@ -356,9 +352,9 @@ d)  some wild cards
 
     #rm -rf  ?
 	
-	#rm -rf  ??
+    #rm -rf  ??
 	
-	#rm -rf  *
+    #rm -rf  *
 	
 
    
