@@ -2,12 +2,12 @@
 ##########################################################################################################################
 ###USER  ADMINISTRATION  COMMANDS
 ##########################################################################################################################
-							UID						GID
-Super User  (root)     		0 						0
+				    UID				GID
+Super User  (root)     		    0 				0
 System User redhat 		    1 to 499 	    		1 to 499
-System User suse		    1 to 1000				1 to 1000
+System User suse		    1 to 1000			1 to 1000
 Normal User redhat 		    500 to 60000     		500 to 60000
-Normal User suse		    1000 to 60000 			1000 to 60000
+Normal User suse		    1000 to 60000 		1000 to 60000
 
 
 max number of user we can create in a redhat/suse
