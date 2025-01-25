@@ -1,0 +1,104 @@
+##########################################################################################################################
+##########################################################################################################################
+###GROUP ADMINISTRATION  PRACTICAL
+##########################################################################################################################
+
+vi  /etc/passwd
+vi  /etc/shadow
+vi  /etc/group
+ 
+
+vi  /etc/group
+vi  /etc/gshadow
+
+linux:x:5000:1001,1002,1003
+
+<groupname>:<passwd-prompt>:<uid>:<gid>:<desc/gecos>:<user-list>
+
+Note:
+#grpck(to chk error in  group file)
+#grpconv(it  updates /etc/gshadow file,if it  get  corrupted)
+##########################################################################################################################
+Section 1 - Create Group 
+**************************************************************************************************************************
+
+ 
+1)  to create  the   group
+--------------------------
+  #groupadd   linux
+  
+  to  chk
+  #grep  linux  /etc/group
+  #grep  linux  /etc/gshadow
+
+2) to assign  group passwd
+-------------------------- 
+  #gpasswd   linux
+   give  the  passwd  (2 times)
+      
+  to  chk
+  #grep   linux   /etc/gshadow
+
+##########################################################################################################################
+Section 2 - Misc
+**************************************************************************************************************************
+create  the  users
+-----------------------------------------
+  #useradd   u1
+  #useradd   u2
+  #useradd   u3
+  #useradd   u4
+
+add   multiple  users  into group
+-----------------------------------------
+  #gpasswd   -M    u1,u2    linux
+  [
+   -M is used only for first time
+   if we use -M second time , it will replace exisitng users with new one provided
+  ]
+
+add  single  user  into group
+-----------------------------------------
+  #gpasswd  -a  u3   linux
+  to  chk
+  #grep  linux  /etc/group
+
+to  delete  user  from group
+-----------------------------------------
+   #gpasswd   -d  u2  linux
+   to  chk
+   #grep   linux   /etc/group
+
+to make  one of  the user as  group admin
+-----------------------------------------
+  #gpasswd   -A   u1  linux
+  to  chk
+  #grep   linux   /etc/gshadow
+NOTE: The group admin will get extra privileges like adding or removing the users from group
+      (which  normal  group members cannot  do)
+
+to  remove  group admin
+-----------------------------------------
+  #gpasswd   -A   ""  linux
+  to chk
+  #grep  linux  /etc/gshadow
+
+to change  gid of group
+-----------------------------------------
+   #groupmod   -g   6000   linux
+   to  chk
+   #grep   linux  /etc/group
+
+to change group name
+-----------------------------------------
+   #groupmod  -n  mcse  linux
+   to chk
+   #grep   mcse  /etc/group
+   
+to  delete  group
+-----------------------------------------
+   #groupdel   mcse
+
+
+
+

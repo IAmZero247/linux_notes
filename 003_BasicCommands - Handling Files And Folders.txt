@@ -1,14 +1,62 @@
 ##########################################################################################################################
 ##########################################################################################################################
 ###Handling Files And Folders
+
+man hier - desc of file system heirarchy
+========
+/boot    	all the boot related files to boot up system 
+
+/bin     	essential-commands/binaries executed by normaluser + root
+/sbin    	essential-commands/binaries executed by root or systemuser
+
+/lib     	kernal modules + drivers + shared libs
+/opt     	third-party softwares
+/usr:    	[Unix Software Resource] like ProgramFiles in Windows
+/selinux 	selinux + associated log files 
+
+/root    	home folder for root user
+/home    	normal user home dirctories
+
+
+/etc     	config files
+/dev     	contain device file attached to system [represent hardware]
+/tmp     	temporary files 
+
+/media   	external storage will be automatically mounted
+/mnt     	manually mount storage devices or partitions
+
+/proc    	virtual filesystem providing process and kernel information
+/var     	store dynamic data, such as caches, log files, and files generated during software operation
+
+/lost+found when the system crashes unexpectedly or shuts down unexpectedly, some file fragments will be stored here.
+			During system startup, the fsck tool will check this directory and repair the damaged file system. 
+			
+			
+			
+			
+			
+. present working directory 
+.. parent of present working directory 
+
+to see size of file or directory 
+--------------------------------
+du -sh /d1/abc.dat     s -> summerize
+0 abc              	   h -> human readable
+				   
+du -sh /etc
+35M /etc
+
+du -s /etc
+35700 /etc
+
 ##########################################################################################################################
 ###1) Cat Command###
 *********************************************************************************************
 Note .(a single dot) - this represents the current directory
 a)create   the  new  file
-  #  cat  > redhat
+  #cat  > redhat
   this is the root  file
-  to save  the file -> press  Ctrl  d
+  to save  the file -> press  ctrl  d
   to  chk the  file -> #ls   or  #ll
 b)to read  the  file
   #cat  redhat
@@ -16,7 +64,7 @@ c)to append  the file
   #cat  >>  redhat
   this is created on wednesday
   
-  to save file ->press  Ctrl  d
+  to save file ->press  ctrl  d
   to chk  the result
   #cat  redhat
   #cat -n redhat(to read file with line number)
@@ -31,10 +79,15 @@ e)to redirect multiple files data into another file
  #cat redhat orangehat > yellowhat
  #cat  yellowhat(to  check)
  #cat  -n  yellowhat(to  see  with  line numbers)
+ 
+
+
 
 ###################### 
 ###2) Touch Command###
 *********************************************************************************************
+empty file
+----------
 a)to create  single  file
   # touch  banjarahills
   to  chk
@@ -47,7 +100,25 @@ c)another  method
   #touch  hyd{1..8}
   #touch  hyd{a..d}
   to chk
-  # ls	
+  # ls
+
+non-empty file
+--------------
+d) cat > abc
+	some data 
+	again some data 
+
+	ctrl + d 
+   
+e ) cat >> abc 
+	appending some more data 
+	
+verify 
+cat -n abc	
+
+
+
+	ctrl +d    
 
 #######################
 ###3) VI/VIM Command###
@@ -71,12 +142,12 @@ G         to go to last line
 
 Extended  mode
 ==============
-Key     Task(function)
-:q    to  quit  without  saving
-:q!   to  quit forcefully without  saving , !- coming out
-:w    to  write(save)
-:wq   to  save and  quit
-:wq!  to  save and  quit forcefully
+Key     		Task(function)
+:q    		to  quit  without  saving
+:q!   		to  quit forcefully without  saving , !- coming out
+:w    		to  write(save)
+:wq   		to  save and  quit
+:wq!  		to  save and  quit forcefully
 :se nu    	to  set  line  numbers
 :se  nonu 	to  remove  line  numbers
 :1,$s/old name/new name    to  replace the  word name
@@ -87,6 +158,50 @@ vi -o  /etc/passwd /etc/group  /etc/shadow
 
 to shift from one file to another -> Ctrl +ww
 to quit each file -> :q1 (when u quit one file , control automatically move to next file)
+
+
+##########################################################################################################################
+###1) Lock  File [x X]###
+###  x -> First time setting or changing
+###       vim -x test1
+###		  or 
+###		  vim test1 
+###		  :x
+###		  Enter encryption key: *****
+###		  Enter the same key again: *****
+###		  :wq!
+###  X -> removing password
+********************************************************************************************* 
+#cat >>>test1
+	some test data 
+
+	ctrl +d 
+
+to lock with password
+---------------------
+#vim -x test1
+	Enter encryption key: *****
+	Enter the same key again: *****
+
+	:wq! 	
+
+cat test1 
+VimCrypt~01!.XYZXYZXYZ 
+
+
+to unlock with password 
+-----------------------
+	open with vim 
+	give password 
+
+	:X 
+	press enter
+	Enter encryption key: [Dont give anything]
+	Enter the same key again:
+	:wq!
+
+	verification ---> cat test1
+
 
 ###################################
 ###4) Absolute And Relative Path###
@@ -154,6 +269,7 @@ ls(Lists)
 #ls  -sh or #ls  -shr(to  chk size human understable)
 #ls  -i(to  chk files and directories with inode number)
 Note:Inode number  is  used by   kernel to understand files and  directories because kernel does  not understand human language name
+#l.   (to see only hidden files and directory)
 
 ############# 
 ###7) COPY###
@@ -173,13 +289,14 @@ a)  copy  file(old  file) into  file(new  file)
    
    
    #touch  /home/apple(new  file in home)
+   move to some other location
    #cp -rv  /home/apple  .(to copy  file from  /home to present directory)
    #cp -rv  *  /(to  copy all files and directories  into  /)
 
 b)  copy  file  into  directory
 ===============================
-    #cp  -rv  redhat(filename)   zoom(directoryname)
- to  chk
+   #cp  -rv  redhat(filename)   zoom(directoryname)
+    to  chk
    #cd  zoom(to enter  into directory)
    #ls      (to chk the  filename)
    #cat  redhat(to read  the file)
@@ -197,7 +314,7 @@ c)  copy  file (old)  into  another file(exiting file)  without overwrite
     press  Ctrl  d
   #cp  -rv   redhat (old file)   unix(existing file)
            n
-  #cat    redhat  >>  unix
+  #cat redhat  >>  unix
     
 	to chk  result
   #cat  unix
@@ -222,6 +339,7 @@ a)  file
      give  y(yes)
     to chk
     #ls
+	
 b)  directory
     #rm  -r  moon
      give  y
@@ -231,6 +349,17 @@ c)  to remove  both  files  and  directories  without  confirmation
     #rm  -rf   hy*  in*  mcse  linux
     to  chk
     #ls
+	
+d)  some wild cards 
+
+    #rm -rf /d1 
+
+    #rm -rf  ?
+	
+	#rm -rf  ??
+	
+	#rm -rf  *
+	
 
    
 ########################

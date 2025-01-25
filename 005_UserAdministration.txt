@@ -2,33 +2,75 @@
 ##########################################################################################################################
 ###USER  ADMINISTRATION  COMMANDS
 ##########################################################################################################################
+							UID						GID
+Super User  (root)     		0 						0
+System User redhat 		    1 to 499 	    		1 to 499
+			suse		    1 to 1000				1 to 1000
+Normal User redhat 		    500 to 60000     		500 to 60000
+			suse		    1000 to 60000 			1000 to 60000
+
+
+max number of user we can create in a redhat/suse
+---------------------------------------------------
+redhat -> 4294967294
+suse   -> 1999999999
+
+
+to check who logged in 
+---------------------------------------------------
+whoami 
+echo $0
+
+echo $UID
+
+important files 
+---------------------------------------------------
+vi  /etc/passwd
+vi  /etc/shadow
+vi  /etc/group
+vi  /etc/default/useradd(to chk normal-user home directory and shell)
+vi  /etc/login.defs(to chk default age of user) 
+
+root:x:0:0:root:/root: /bin/bash
+
+<username>:<passwd-prompt>:<uid>:<gid>:<desc/gecos>:<home-dir>:<default-shell>
+
+chfn 
+
+##########################################################################################################################
 Section 1
 **************************************************************************************************************************
-1) to create   new   user account
+1) to list all normal user 
+    #ls /home
+   
+
+2) to create   new   user account
     #useradd   u1(username)
     to chk  user   detail
     #grep  u1  /etc/passwd
     #grep  u1  /etc/shadow
     #id  u1
     #groups  u1
-2) to assign  password  to user
+	
+	or 
+	#adduser u2 
+3) to assign  password  to user
     #passwd   u1
     give  the  password(2 times)
     to chk
     #grep  u1  /etc/shadow
 	
-3)  to change  the  age  of user password
-   #chage   u1
-   give  the  value as per  the  requirement
-   or
-   #chage -m(min) 3 -M(max)  90  -W(warning days) 5  u1
-   to chk 
-   #grep  u1  /etc/shadow
-**************************************************************************************************************************
-  
+4) change aging policy command [to change  the  age  of user password] 
+    #chage   u1
+    give  the  value as per  the  requirement
+    or
+    #chage -m(min) 3 -M(max)  90  -W(warning days) 5  u1
+    to chk 
+    #grep  u1  /etc/shadow
+########################################################################################################################## 
 Section 2 
 **************************************************************************************************************************  
-4a) login  as  user -  from   root  terminal
+a) login  as  user -  from   root  terminal
    # su u1 [then  the  user  will  login  root  home  directory(/root)]      
    to chk
    $pwd
@@ -42,36 +84,41 @@ Section 2
    $logout
    
    
-4b) from  graphical   mode
+b) from  graphical   mode
        #gdmflexiserver
-    click  on username  and  give the password , then  logout  from   user
-4c) from  text  mode
-    press  Alt   Ctrl   F2
-    login   give  the name and password
-    then  $logout
+       click  on username  and  give the password , then  logout  from   user
+c) from  text  mode
+     press  Alt   Ctrl   F2
+     login   give  the name and password
+     then  $logout
     
-	press  Alt  Ctrl  F1 (to come  to graphical  mode)
+   press  Alt  Ctrl  F1 (to come  to graphical  mode)
 
-**************************************************************************************************************************
-  
+########################################################################################################################## 
 Section 3 Lock N Unlock
+Lock   --->L/l
+Unlock ---> U/u
+Status ---> S
 ************************************************************************************************************************** 
-5a) to  lock  the user  from  login
-      #usermod   -L    u1
-  or  #passwd  -l  u1
-      to chk   the  result
-      #grep  u1  /etc/shadow
+a) to lock the user from login
+------------------------------
+      command																				    verification
+      #usermod -L  u1				-----------> this will lock user 			  -----------> #grep  u1  /etc/shadow
+  or  #passwd  -l  u1				-----------> this will lock password for user -----------> #passwd  -S  u1
+      
+      
+NOTE: superuser(root) still can do ---------->#su - u1
 	  
-  or  #passwd  -S  u1
-       try   to  login  as  user  by using
-       #gdmflexiserver
-       or  press   Alt  Ctrl  F2
-       try  to log is user by giving  the username  and  password
-       Result:  user cannot  login
-       press   Alt  Ctrl  F1  (to come to graphical  mode)
-another  method
+    try   to  login  as  user  by using
+      #gdmflexiserver
+      or  press   Alt  Ctrl  F2
+      try  to log is user by giving  the username  and  password
+      Result:  user cannot  login
+      press   Alt  Ctrl  F1  (to come to graphical  mode)
 
-6) to  unlock  the  user  from   login
+
+b) to unlock the user for login
+-------------------------------
       #usermod  -U   u1
   or  #passwd -u  u1
       to chk  the result
@@ -79,63 +126,82 @@ another  method
   or  #passwd  -S  u1
   
       try  to  login  as  user  by using
-      #gdmflexiserver
-      or  press  Alt  Ctrl   F2  
-      try  to login  as  user
-      Result :  the  user  can  login 
-                then  logout  from  user
-      press  Alt Ctrl F1  (to come to graphical  mode)
-	  
-**************************************************************************************************************************
-  
-Section 4
+        #gdmflexiserver
+        or  press  Alt  Ctrl   F2  
+        try  to login  as  user
+        Result :  the  user  can  login 
+        then  logout  from  user
+        press  Alt Ctrl F1  (to come to graphical  mode)
+		
+##########################################################################################################################
+Section 4 - PasswordLess Login [Delete Password]
+************************************************************************************************************************** 
+to delete(remove) user passwd
+-----------------------------
+   #passwd  -d  u1
+   to  chk
+   #passwd  -S  u1 
+##########################################################################################################################  
+Section 5 Misc 
+Shell         ---> s
+UID	    	  ---> u 
+Command/GECOS ---> c
 **************************************************************************************************************************  
-7) to  chk  type  of  shells
+a) to  chk  type  of  shells
+----------------------------
     #cat  /etc/shells
     #grep  u1  /etc/passwd
   
-8) to change  uid,  to write  comment  and to change  the shell of user
-    #usermod  -u  2018   -c  "it  dept"  -s  /bin/sh      u1
+b) to change  uid
+-----------------  
+    #usermod  -u 5000  u1
    to  chk 
     #grep   u1   /etc/passwd
 
-#vi  /etc/default/useradd(to  chk  user home directory and shell)
-#vi  /etc/login.defs(to chk default  age  of  user)  
+c) to write comment
+-------------------  
+    #usermod -c  "it  dept" u1
+   to  chk 
+    #grep   u1   /etc/passwd
 
-**************************************************************************************************************************
-  
-Section 5
+d) to change  the shell of user
+-------------------------------
+    #usermod -s /bin/sh u1
+   to  chk 
+    #grep   u1   /etc/passwd	
+
+##########################################################################################################################
+Section 6
 ************************************************************************************************************************** 
 	
-9) to  change  home directory  of new  user
+a) to  change  home directory  of new  user
     #vi  /etc/default/useradd
+   
    press  i  (to go to insert  mode)
-    go to 3 line  remove /home  in HOME
+    go to 3rd line  remove /home  in HOME
     then  write  HOME=/opt
     then  press  esc key  and  then  press shift :wq
-now  create  the new  user
+	
+   now  create  the new  user
     #useradd   u2
    to  chk
     #tail -2  /etc/passwd
-then  change  home  directory  to /home
+   
+   
+b) then  change  home  directory  to /home
     #vi  /etc/default/useradd
-    press i   3 line  remove /opt  and  write HOME=/home
+    press i  and got to 3rd line remove /opt and write HOME=/home
     press esc :wq
  
-**************************************************************************************************************************
-  
-Section 6
+##########################################################################################################################
+Section 6 
 **************************************************************************************************************************
  
-11) to  force the  user  to  change the  passwd when they  login
+a) to  force the  user  to  change the  passwd when they  login
+---------------------------------------------------------------
    #passwd  -f  u1  
    
-   
-10) to delete(remove) user passwd
-   #passwd  -d   u1
-   to  chk
-   #passwd  -S  u1   
- 
-13) to  delete  user account
-   #userdel  -r  u1
+b) to  delete  user account
+---------------------------
+  #userdel  -r  u1
 
