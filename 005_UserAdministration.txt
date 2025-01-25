@@ -100,7 +100,7 @@ c) from  text  mode
      login   give  the name and password
      then  $logout
     
-   press  alt  ctrl  F1 (to come  to graphical  mode)
+   press  Alt  Ctrl  F1 (to come  to graphical  mode)
 
 ########################################################################################################################## 
 Section 3 Lock N Unlock
