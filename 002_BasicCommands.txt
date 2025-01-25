@@ -39,17 +39,17 @@
 				press  Alt  Ctrl   F2  to  F6(text  mode)
 				we can config up to 64 
        change virtual termal command 
-	   -----------------------------
-	   chvt 5  ---> Alt  Ctrl   F6 
+       -----------------------------
+	chvt 5  ---> Alt  Ctrl   F6 
 	   
-	   tele-terminal type or tty ->help to know in which terminal i am currently using 
-	   -------------------------------------------------------------------------------
-	   #tty
-	   /dev/tty5
+       tele-terminal type or tty ->help to know in which terminal i am currently using 
+       -------------------------------------------------------------------------------
+       #tty
+       /dev/tty5
 08) login prompt  information
 ============================================================
     [root@localhost~]#
- where  root= username(which user has  login)
+	where  root= username(which user has  login)
         localhost=systemname
          ~ = login user home directory symbol
          # = privilege   of  root  user
@@ -62,7 +62,7 @@
       #pwd  
    where  pwd  stands for print the user working  directory
    
-   Note:  if  we  want  to know  description of  any command
+   note:  if  we  want  to know  description of  any command
           we  have  the  help and  for  help we  have  to use #man
    for  ex  #man   pwd
             to come  out  from  help press  q
@@ -81,7 +81,7 @@
 ============================================================
     #cd  
     #ls
- Note   a)  directory(text)  colour  is blue
+ note   a)  directory(text)  colour  is blue
         b)  file(text) colour  is  black
 
 13) to  hide  the  colour  of  file  and  directory
