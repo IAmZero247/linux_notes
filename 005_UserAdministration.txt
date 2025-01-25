@@ -5,9 +5,9 @@
 							UID						GID
 Super User  (root)     		0 						0
 System User redhat 		    1 to 499 	    		1 to 499
-			suse		    1 to 1000				1 to 1000
+System User suse		    1 to 1000				1 to 1000
 Normal User redhat 		    500 to 60000     		500 to 60000
-			suse		    1000 to 60000 			1000 to 60000
+Normal User suse		    1000 to 60000 			1000 to 60000
 
 
 max number of user we can create in a redhat/suse
@@ -35,7 +35,15 @@ root:x:0:0:root:/root: /bin/bash
 
 <username>:<passwd-prompt>:<uid>:<gid>:<desc/gecos>:<home-dir>:<default-shell>
 
-chfn 
+chfn command to change user fingerprint [fullname, room no, work no etc ]
+=========================================================================
+chfn sachin 
+
+sudo chfn -f "sachin tendulkar" sachin
+sudo chfn -r 9999 sachin
+sudo chfn -w 124567890 sachin
+sudo chfn -h 123456 sachin
+sudo chfn -o "Former Indian Cricketer" sachin
 
 ##########################################################################################################################
 Section 1
