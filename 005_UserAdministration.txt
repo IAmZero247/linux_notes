@@ -60,8 +60,8 @@ Section 1
     #id  u1
     #groups  u1
 	
-	or 
-	#adduser u2 
+    or    
+    #adduser u2 
 3) to assign  password  to user
     #passwd   u1
     give  the  password(2 times)
@@ -100,7 +100,7 @@ c) from  text  mode
      login   give  the name and password
      then  $logout
     
-   press  Alt  Ctrl  F1 (to come  to graphical  mode)
+   press  alt  ctrl  F1 (to come  to graphical  mode)
 
 ########################################################################################################################## 
 Section 3 Lock N Unlock
@@ -110,8 +110,8 @@ Status ---> S
 ************************************************************************************************************************** 
 a) to lock the user from login
 ------------------------------
-      command																				    verification
-      #usermod -L  u1				-----------> this will lock user 			  -----------> #grep  u1  /etc/shadow
+      command										      verification
+      #usermod -L  u1				-----------> this will lock user 	      -----------> #grep  u1  /etc/shadow
   or  #passwd  -l  u1				-----------> this will lock password for user -----------> #passwd  -S  u1
       
       
@@ -163,19 +163,19 @@ a) to  chk  type  of  shells
 b) to change  uid
 -----------------  
     #usermod  -u 5000  u1
-   to  chk 
+    to  chk 
     #grep   u1   /etc/passwd
 
 c) to write comment
 -------------------  
     #usermod -c  "it  dept" u1
-   to  chk 
+    to  chk 
     #grep   u1   /etc/passwd
 
 d) to change  the shell of user
 -------------------------------
     #usermod -s /bin/sh u1
-   to  chk 
+    to  chk 
     #grep   u1   /etc/passwd	
 
 ##########################################################################################################################
@@ -192,7 +192,7 @@ a) to  change  home directory  of new  user
 	
    now  create  the new  user
     #useradd   u2
-   to  chk
+    to  chk
     #tail -2  /etc/passwd
    
    
