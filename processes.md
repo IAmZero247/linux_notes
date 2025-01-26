@@ -149,7 +149,7 @@ PID TTY      STAT   TIME COMMAND
 
 ## The `pstree` Command
 ```
-pstree
+#pstree
 systemd─┬─ModemManager───2*[{ModemManager}]
         ├─NetworkManager───2*[{NetworkManager}]
         ├─VGAuthService
