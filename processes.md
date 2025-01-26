@@ -1,7 +1,9 @@
 ## Processes
 
-1. Processes represent an instance of a running program. It also includes the current activity, including the program counter, the contents of the processor's registers, 
-and the variable storage (stack and heap). Each process is assigned a unique process identifier (PID).
+1. Processes represent an instance of a running program.
+ 
+   It also includes the current activity, including the program counter, the contents of the processor's registers, 
+   and the variable storage (stack and heap). Each process is assigned a unique process identifier (PID).
 
 1. Modern computing systems, with their powerful processors, can handle a multitude of processes at the same time. 
 This parallel execution is managed through a technique known as rapid context switching, where the operating system's scheduler assigns 
