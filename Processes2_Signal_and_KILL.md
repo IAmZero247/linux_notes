@@ -138,11 +138,11 @@ kill -2 -SIGTERM
 ```
 
 
-### Methods for Searching Processes
+## Methods for Searching Processes
 
 In a Linux environment, various methods are available to search for processes, depending on the granularity of information you require or your personal preference. The search can be done using commands such as `ps`, `grep`, `pgrep`, and `htop`.
 
-#### Searching Processes with `ps` and `grep`
+### Searching Processes with `ps` and `grep`
 
 The `ps` command displays a list of currently running processes. To search for processes by name, you can combine `ps` with the `grep` command. The following command:
 
@@ -152,7 +152,7 @@ ps -ef | grep process_name
 
 searches and displays all processes containing the specified name (process_name in this example). Here, ps -ef lists all processes, and grep process_name filters the list to show only the processes with the specified name.
 
-#### Searching Processes with pgrep
+### Searching Processes with pgrep
 
 The pgrep command offers a quick and direct method to search for processes by their names and display their PIDs. For instance, to find all running processes named chromium, you would use:
 
@@ -162,7 +162,7 @@ pgrep chromium
 
 This command displays the PIDs for all instances of chromium currently running on the system.
 
-#### Searching Processes with htop
+### Searching Processes with htop
 
 htop provides a real-time, interactive view of all running processes in a system. It's a robust tool for process management, offering capabilities like process searching, sorting, and termination.
 
@@ -173,83 +173,3 @@ To search for processes in htop:
 3. Type the name of the process or the user you're searching for, then press Enter.
 4. The list of processes will update to show only those matching your search criteria.
 
-### Foreground and Background Jobs
-
-The tasks running on your system can be in one of two states, either running in the 'foreground' or in the 'background'. These two states provide flexibility for multi-tasking and efficient system utilization.
-
-- When a process is running as a **Foreground Process**, it actively executes and interacts with the terminal's input and output. These are typically tasks that the user has initiated and is directly interacting with in the terminal.
-- In contrast, a **Background Process** operates without direct interaction with the terminal's input and output. This functionality enables users to run multiple processes at the same time, allowing them to initiate new tasks without waiting for the completion of others.
-
-```
-+------------------------+
-|                        |
-| Start Job in Foreground|
-|                        |
-+-----------+------------+
-            |
-            | Ctrl+Z or bg
-            v
-+-----------+------------+
-|                        |
-|   Job Running in       |
-|   Background           |
-|                        |
-+-----------+------------+
-            |
-            | fg or job completes
-            v
-+-----------+------------+
-|                        |
-|   Job Completes        |
-|   or Returns to        |
-|   Foreground           |
-|                        |
-+------------------------+
-```
-
-#### Controlling Job Execution
-
-You can direct a program to run in the background right from its initiation by appending an ampersand `&` operator after the command. Consider the following example:
-
-```bash
-sleep 1000 &
-```
-
-Here, the sleep command will operate in the background, waiting for 1000 seconds before terminating. The output typically resembles this:
-
-```bash
-[1] 3241
-```
-
-The number enclosed in square brackets (like `[1]`) represents the job number, while the subsequent number (like 3241) is the process ID (PID).
-
-#### Job and Process Management Commands
-
-To view all active jobs in the system, use the `jobs` command.
-
-If you wish to bring a background job to the foreground, utilize the fg command followed by the job number. For instance, to bring job number 3 to the foreground, you would use:
-
-```bash
-fg 3
-```
-
-To convert a foreground process to a background process, you can use Ctrl+Z. This operation pauses the process and allows you to resume it in the background using the bg command followed by the job number. For instance:
-
-```bash
-bg 1
-```
-
-This command will resume job number 1 in the background. Understanding and managing foreground and background jobs helps to increase productivity and efficiency when working in a shell environment.
-
-### Challenges
-
-1. Find the process ID (PID) of a specific process by its name.
-2. List all processes that belong to a specific user.
-3. Start a process in the background, bring it to the foreground, and then move it back to the background.
-4. Terminate a process using both its PID and its name.
-5. Write a simple C program that spawns a child process to execute a command.
-6. Use the `top` command to identify the process with the highest CPU usage and terminate it.
-7. Pause a running process using the appropriate signal and then resume it.
-8. Find the parent process ID (PPID) of a specific process.
-9. Explain the difference between a shell job and a daemon process.
-10. Use the `htop` command to filter processes by a specific string and then sort them by memory usage.
