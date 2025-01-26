@@ -2,22 +2,25 @@
 
 1. Processes represent an instance of a running program.
  
-   It also includes the current activity, including the program counter, the contents of the processor's registers, 
-   and the variable storage (stack and heap). Each process is assigned a unique process identifier (PID).
+	It also includes the current activity, including the program counter, the contents of the processor's registers, 
+and the variable storage (stack and heap). Each process is assigned a unique process identifier (PID).
 
 1. Modern computing systems, with their powerful processors, can handle a multitude of processes at the same time. 
-This parallel execution is managed through a technique known as rapid context switching, where the operating system's scheduler assigns 
+	
+	This parallel execution is managed through a technique known as rapid context switching, where the operating system's scheduler assigns 
 CPU time slices to each process and switches between them so quickly that it gives the illusion of simultaneous execution.
 
-1. In the context of multicore CPUs, each core can handle its own set of processes independently. 
-This multi-core processing enables even more efficient and faster handling of multiple processes.
+1. In the context of multicore CPUs, each core can handle its own set of processes independently. This multi-core processing enables even 
+more efficient and faster handling of multiple processes.
 
 Processes in a system can be broadly categorized into two types:
+================================================================
 
 - A **Shell Job** refers to a process started from a user's command line interface or shell. 
 
 - In contrast, a **Daemon** is a background process that usually starts at system boot and runs with elevated privileges. 
-Daemons do not interact directly with the user interface; instead, they operate silently in the background, handling various system-related tasks. 
+	
+	Daemons do not interact directly with the user interface; instead, they operate silently in the background, handling various system-related tasks. 
 
 ## Process Management Commands
 
