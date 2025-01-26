@@ -341,6 +341,7 @@ To manage system resources effectively, it is sometimes necessary to terminate r
 
 #### Terminating Processes by PID
 =================================
+
 Each process, upon its creation, is assigned a unique Process ID (PID). To stop a process using its PID, the `kill` command is used. For instance:
 
 ```bash
@@ -351,6 +352,7 @@ In this example, a termination signal is sent to the process with PID 12345, ins
 
 #### Terminating Processes by Name
 ==================================
+
 If you don't know a process's PID, but you do know its name, the `pkill` command is handy. This command allows you to stop a process using its name:
 
 ```bash
@@ -361,6 +363,7 @@ In this case, a termination signal is sent to all processes that share the speci
 
 #### Specifying Termination Signals
 ===================================
+
 The `kill` and `pkill` commands provide the option to specify the type of signal sent to a process. For example, to send a SIGINT signal (equivalent to Ctrl+C), you can use:
 
 ```bash
