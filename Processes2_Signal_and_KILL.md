@@ -1,4 +1,4 @@
-#Process Temrination Using Signals And Kill
+# Process Temrination Using Signals And Kill
 
 ## Process life cycle
 
@@ -30,9 +30,11 @@ The life cycle of a process in an operating system is a critical concept. The pr
 
 - When a process is **Created**, it enters the system and is allocated the necessary resources, but it has not yet started running.
 - In the **Running** state, the process is actively executing instructions on the CPU.
-- A process can be **Interrupted**, meaning it is temporarily stopped. This may occur to allow other processes to run or because the process is waiting for an input or an event.
+- A process can be **Interrupted**, meaning it is temporarily stopped. This may occur to allow other processes to run or 
+  because the process is waiting for an input or an event.
 - The **Exit** state indicates that the process has completed its execution and is ready to be removed from the system.
-- If a process is **Terminated**, it means that an error occurred or an explicit kill command was issued, resulting in the process being forcefully stopped.
+- If a process is **Terminated**, it means that an error occurred or an explicit kill command was issued, 
+  resulting in the process being forcefully stopped.
 
 ## Process Spawning
 
@@ -113,8 +115,7 @@ Linux supports a variety of signals, each designed for a specific purpose. Some 
 | `SIGCONT` | (18) | Resumes paused process |
 
 Terminating processes should be performed with caution. Some processes may be critical for system operation or hold valuable data that could be lost upon abrupt termination. 
-	
-	Therefore, it's advisable to use commands such as `ps` and `top` to observe currently running processes before attempting to stop any of them. This approach allows for more 
+Therefore, it's advisable to use commands such as `ps` and `top` to observe currently running processes before attempting to stop any of them. This approach allows for more 
 controlled and careful system management, preventing unintended disruptions or data loss.
 
 #### Special PID Values in `kill`
