@@ -339,7 +339,7 @@ This command creates a new process that executes the echo command, resulting in 
 
 To manage system resources effectively, it is sometimes necessary to terminate running processes. Depending on your needs, this can be accomplished in several ways.
 
-#### Terminating Processes by PID
+### Terminating Processes by PID
 =================================
 
 Each process, upon its creation, is assigned a unique Process ID (PID). To stop a process using its PID, the `kill` command is used. For instance:
@@ -350,7 +350,7 @@ kill 12345
 
 In this example, a termination signal is sent to the process with PID 12345, instructing it to stop execution.
 
-#### Terminating Processes by Name
+### Terminating Processes by Name
 ==================================
 
 If you don't know a process's PID, but you do know its name, the `pkill` command is handy. This command allows you to stop a process using its name:
@@ -361,7 +361,7 @@ pkill process_name
 
 In this case, a termination signal is sent to all processes that share the specified name, effectively halting their execution.
 
-#### Specifying Termination Signals
+### Specifying Termination Signals
 ===================================
 
 The `kill` and `pkill` commands provide the option to specify the type of signal sent to a process. For example, to send a SIGINT signal (equivalent to Ctrl+C), you can use:
