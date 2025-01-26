@@ -75,7 +75,7 @@ root           4       2  0 07:06 ?        00:00:00 [rcu_par_gp]
 
 This provides detailed information including User ID (UID), Process ID (PID), Parent Process ID (PPID), CPU usage (%CPU), and the command path (CMD).
 
-	UID     PID    PPID %CPU CMD
+   UID     PID    PPID %CPU CMD
     0       1       0  0.0 /usr/lib/systemd/systemd --switched-root --system --deserialize 17
     0       2       0  0.0 [kthreadd]
     0       3       2  0.0 [rcu_gp]
@@ -96,16 +96,16 @@ root        2429  1.0  9.2 4306576 342708 tty2   Sl+  07:07   8:16 /usr/bin/gnom
 
 ```
 -e	Displays information about all processes.						ps -e
--f	Provides full-format listing.									ps -f
--l	Displays long format listing.									ps -l
--j	Displays jobs format.											ps -j
--o	User-defined format.											ps -o pid,comm
--p	Select by PID.													ps -p 1234
--t	Select by TTY.													ps -t pts/1
--u	Select by effective user ID (EUID).								ps -u root
--x	List processes without controlling terminals (like daemons).	ps -x
--C	Select by command name.											ps -C bash
--L	Show threads, possibly with LWP and NLWP columns.				ps -L
+-f	Provides full-format listing.								ps -f
+-l	Displays long format listing.								ps -l
+-j	Displays jobs format.									ps -j
+-o	User-defined format.									ps -o pid,comm
+-p	Select by PID.										ps -p 1234
+-t	Select by TTY.										ps -t pts/1
+-u	Select by effective user ID (EUID).							ps -u root
+-x	List processes without controlling terminals (like daemons).				ps -x
+-C	Select by command name.									ps -C bash
+-L	Show threads, possibly with LWP and NLWP columns.					ps -L
 ```
 
 6. WRT user `ps -u username`
