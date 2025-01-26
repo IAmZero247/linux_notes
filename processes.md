@@ -147,9 +147,117 @@ PID TTY      STAT   TIME COMMAND
 ...
 ```
 
+## The `pstree` Command
+```
+pstree
+systemd─┬─ModemManager───2*[{ModemManager}]
+        ├─NetworkManager───2*[{NetworkManager}]
+        ├─VGAuthService
+        ├─accounts-daemon───2*[{accounts-daemon}]
+        ├─alsactl
+        ├─atd
+        ├─auditd─┬─sedispatch
+        │        └─2*[{auditd}]
+        ├─avahi-daemon───avahi-daemon
+        ├─bluetoothd
+        ├─colord───2*[{colord}]
+        ├─crond
+        ├─cupsd
+        ├─dbus-daemon───{dbus-daemon}
+        ├─dnsmasq───dnsmasq
+        ├─firewalld───{firewalld}
+        ├─fprintd───4*[{fprintd}]
+        ├─gdm─┬─gdm-session-wor─┬─gdm-wayland-ses─┬─gnome-session-b─┬─gnome-shell─┬─Xwayland
+        │     │                 │                 │                 │             ├─ibus-daemon─┬─ibus-dconf───3*[{ibus-dconf}]
+        │     │                 │                 │                 │             │             ├─ibus-engine-sim───2*[{ibus-engine-sim}]
+        │     │                 │                 │                 │             │             ├─ibus-extension-───3*[{ibus-extension-}]
+        │     │                 │                 │                 │             │             └─2*[{ibus-daemon}]
+        │     │                 │                 │                 │             └─18*[{gnome-shell}]
+        │     │                 │                 │                 ├─gnome-software───3*[{gnome-software}]
+        │     │                 │                 │                 ├─gsd-a11y-settin───3*[{gsd-a11y-settin}]
+        │     │                 │                 │                 ├─gsd-account───3*[{gsd-account}]
+        │     │                 │                 │                 ├─gsd-clipboard───2*[{gsd-clipboard}]
+        │     │                 │                 │                 ├─gsd-color───3*[{gsd-color}]
+        │     │                 │                 │                 ├─gsd-datetime───3*[{gsd-datetime}]
+        │     │                 │                 │                 ├─gsd-disk-utilit───2*[{gsd-disk-utilit}]
+        │     │                 │                 │                 ├─gsd-housekeepin───3*[{gsd-housekeepin}]
+        │     │                 │                 │                 ├─gsd-keyboard───3*[{gsd-keyboard}]
+        │     │                 │                 │                 ├─gsd-media-keys───3*[{gsd-media-keys}]
+        │     │                 │                 │                 ├─gsd-mouse───3*[{gsd-mouse}]
+        │     │                 │                 │                 ├─gsd-power───3*[{gsd-power}]
+        │     │                 │                 │                 ├─gsd-print-notif───2*[{gsd-print-notif}]
+        │     │                 │                 │                 ├─gsd-rfkill───2*[{gsd-rfkill}]
+        │     │                 │                 │                 ├─gsd-screensaver───2*[{gsd-screensaver}]
+        │     │                 │                 │                 ├─gsd-sharing───3*[{gsd-sharing}]
+        │     │                 │                 │                 ├─gsd-smartcard───5*[{gsd-smartcard}]
+        │     │                 │                 │                 ├─gsd-sound───3*[{gsd-sound}]
+        │     │                 │                 │                 ├─gsd-wacom───3*[{gsd-wacom}]
+        │     │                 │                 │                 ├─gsd-xsettings───3*[{gsd-xsettings}]
+        │     │                 │                 │                 ├─tracker-miner-a───4*[{tracker-miner-a}]
+        │     │                 │                 │                 ├─tracker-miner-f───4*[{tracker-miner-f}]
+        │     │                 │                 │                 └─3*[{gnome-session-b}]
+        │     │                 │                 └─2*[{gdm-wayland-ses}]
+        │     │                 └─3*[{gdm-session-wor}]
+        │     └─2*[{gdm}]
+        ├─geoclue───2*[{geoclue}]
+        ├─gnome-keyring-d───3*[{gnome-keyring-d}]
+        ├─gsd-printer───3*[{gsd-printer}]
+        ├─gssproxy───5*[{gssproxy}]
+        ├─ibus-x11───2*[{ibus-x11}]
+        ├─irqbalance───{irqbalance}
+        ├─ksmtuned───sleep
+        ├─lsmd
+        ├─mcelog
+        ├─packagekitd───2*[{packagekitd}]
+        ├─polkitd───7*[{polkitd}]
+        ├─pulseaudio───2*[{pulseaudio}]
+        ├─rpcbind
+        ├─rsyslogd───2*[{rsyslogd}]
+        ├─rtkit-daemon───2*[{rtkit-daemon}]
+        ├─smartd
+        ├─sshd
+        ├─sssd_kcm
+        ├─systemd─┬─(sd-pam)
+        │         ├─at-spi-bus-laun─┬─dbus-daemon───{dbus-daemon}
+        │         │                 └─3*[{at-spi-bus-laun}]
+        │         ├─at-spi2-registr───2*[{at-spi2-registr}]
+        │         ├─dbus-daemon───{dbus-daemon}
+        │         ├─dconf-service───2*[{dconf-service}]
+        │         ├─evolution-addre─┬─evolution-addre───5*[{evolution-addre}]
+        │         │                 └─4*[{evolution-addre}]
+        │         ├─evolution-calen─┬─evolution-calen───8*[{evolution-calen}]
+        │         │                 └─4*[{evolution-calen}]
+        │         ├─evolution-sourc───3*[{evolution-sourc}]
+        │         ├─gnome-shell-cal───5*[{gnome-shell-cal}]
+        │         ├─gnome-terminal-─┬─bash───pstree
+        │         │                 └─3*[{gnome-terminal-}]
+        │         ├─goa-daemon───3*[{goa-daemon}]
+        │         ├─goa-identity-se───3*[{goa-identity-se}]
+        │         ├─gvfs-afc-volume───3*[{gvfs-afc-volume}]
+        │         ├─gvfs-goa-volume───2*[{gvfs-goa-volume}]
+        │         ├─gvfs-gphoto2-vo───2*[{gvfs-gphoto2-vo}]
+        │         ├─gvfs-mtp-volume───2*[{gvfs-mtp-volume}]
+        │         ├─gvfs-udisks2-vo───3*[{gvfs-udisks2-vo}]
+        │         ├─gvfsd───2*[{gvfsd}]
+        │         ├─gvfsd-fuse───5*[{gvfsd-fuse}]
+        │         ├─gvfsd-metadata───2*[{gvfsd-metadata}]
+        │         ├─ibus-portal───2*[{ibus-portal}]
+        │         ├─tracker-store───4*[{tracker-store}]
+        │         └─xdg-permission-───2*[{xdg-permission-}]
+        ├─systemd-journal
+        ├─systemd-logind
+        ├─systemd-machine
+        ├─systemd-udevd
+        ├─tuned───4*[{tuned}]
+        ├─udisksd───4*[{udisksd}]
+        ├─upowerd───2*[{upowerd}]
+        ├─2*[vmtoolsd───3*[{vmtoolsd}]]
+        ├─vmware-vmblock-───2*[{vmware-vmblock-}]
+        └─wpa_supplicant
 
+```
 
-#### The `top` Command
+## The `top` Command
 
 For real-time process monitoring, top is used:
 
