@@ -259,25 +259,29 @@ systemd─┬─ModemManager───2*[{ModemManager}]
 
 ## The `top` Command
 
-For real-time process monitoring, top is used:
+For real-time process monitoring, top command is used. Press Z to set different color to each pages
+
+	This shows a dynamic list of processes, usually sorted by CPU usage. It includes system summary information (like CPU and memory usage) 
+and a detailed list of processes.
+
 
 ```
-top
-```
+#top
 
-This shows a dynamic list of processes, usually sorted by CPU usage. It includes system summary information (like CPU and memory usage) and a detailed list of processes.
+top - 21:13:10 up 14:06,  2 users,  load average: 0.06, 0.10, 0.09
+Tasks: 245 total,   1 running, 244 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  6.1 us,  2.1 sy,  0.0 ni, 90.5 id,  0.3 wa,  0.8 hi,  0.1 si,  0.0 st
+MiB Mem :   3633.7 total,   1865.5 free,   1002.3 used,    765.9 buff/cache
+MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.   2372.7 avail Mem 
 
-Sample Output:
-
-```
-top - 03:16:10 up 1 day,  6:37,  2 users,  load average: 1.20, 0.45, 0.15
-Tasks: 287 total,   1 running, 286 sleeping,   0 stopped,   0 zombie
-%Cpu(s):  2.0 us,  0.5 sy,  0.0 ni, 97.4 id,  0.0 wa,  0.0 hi,  0.1 si,  0.0 st
-KiB Mem : 16316412 total,  3943404 free,  8450008 used,  3923016 buff/cache
-KiB Swap:  8388604 total,  8388604 free,        0 used. 11585756 avail Mem 
-
-  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND   
- 1297 root      20   0  457472  56080  36924 S   5.6  0.3   0:03.89 Xorg     
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND                                                                                                                                     
+   2429 root      20   0 4306636 340848 129892 S  27.7   9.2  10:52.76 gnome-shell                                                                                                                                 
+   4095 root      20   0  748532  52104  36132 S   2.0   1.4   0:30.62 gnome-terminal-                                                                                                                             
+  12193 root      20   0  264312   4500   3568 R   1.3   0.1   0:00.52 top                                                                                                                                         
+    911 root      20   0  636576  11680   9768 S   0.7   0.3   4:32.07 vmtoolsd                                                                                                                                    
+   1102 root      20   0  696204  33164  16696 S   0.7   0.9   4:25.54 tuned                                                                                                                                       
+   2786 root      20   0  732796  38840  31716 S   0.3   1.0   4:19.59 vmtoolsd                                                                                                                                    
+  10981 root      20   0  400976  40056   8292 S   0.3   1.1   0:06.84 sssd_kcm         
 ...
 ```
 
@@ -330,34 +334,6 @@ echo "Hello, world!"
 ```
 
 This command creates a new process that executes the echo command, resulting in the specified text being printed on the terminal.
-
-For more complex operations, you might need to spawn processes programmatically. In the C programming language, the fork and exec functions are frequently used for this purpose.
-
-- `fork()` creates a copy of the currently executing process, generating a new child process.
-- `exec()` replaces the current process with a new one.
-
-Consider the following example:
-
-```C
-#include <stdio.h>
-#include <unistd.h>
-
-int main() {
-  pid_t pid = fork();
-  if (pid == 0) {
-    // This is the child process
-    exec("/bin/ls");
-  } else {
-    // This is the parent process
-    printf("Child process ID: %d\n", pid);
-  }
-  return 0;
-}
-```
-
-In this program, a new process is created using the fork function, which then gets replaced by the `ls` command via the exec function. The parent process simply prints the child process ID on the terminal.
-
-There are several other methods to spawn processes in Linux. Functions like `system`, `popen`, or `posix_spawn` from the POSIX library also provide process spawning capabilities.
 
 ### Process Termination
 
