@@ -30,78 +30,124 @@ Process management is integral to system administration. The `ps` and `top` comm
 
 The `ps` command displays information about active processes. Here are some variants of the command:
 
-I. Basic Process Listing
-
-```bash
-ps -ef
-```
-
-This outputs a list of all currently running processes, showing the process ID (PID), terminal associated with the process (TTY), CPU time (TIME), and the executable name (CMD).
-
-Sample Output:
+1. `ps` - present terminal process
 
 ```
-UID        PID  PPID  C STIME TTY          TIME CMD
-root         1     0  0 03:15 ?        00:00:01 /sbin/init
+#ps 
+
+PID   TTY          TIME  CMD
+4100  pts/0    	00:00:00 bash
+11172 pts/0    	00:00:00 ps
+
+```
+
+2. `ps -A` or `ps -ef`
+
+```
+#ps -A
+
+This outputs a list of all currently running processes, showing the process ID (PID), 
+terminal associated with the process (TTY), CPU time (TIME), and the executable name (CMD).
+
+PID TTY          TIME CMD
+1   ?        00:00:12 systemd
+2   ?        00:00:00 kthreadd
+3   ?        00:00:00 rcu_gp
 ...
+
+Below  command will give more details 
+=====================================
+#ps -ef 
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 07:06 ?        00:00:12 /usr/lib/systemd/systemd --switched-root --system --deserialize 17
+root           2       0  0 07:06 ?        00:00:00 [kthreadd]
+root           3       2  0 07:06 ?        00:00:00 [rcu_gp]
+root           4       2  0 07:06 ?        00:00:00 [rcu_par_gp]
+...	
 ```
 
-II. Detailed Process Information
+
+3. Detailed Process Information ```ps -A --format uid,pid,ppid,%cpu,cmd```
 
 ```
-ps -e --format uid,pid,ppid,%cpu,cmd
-```
+#ps -A --format uid,pid,ppid,%cpu,cmd
+
 
 This provides detailed information including User ID (UID), Process ID (PID), Parent Process ID (PPID), CPU usage (%CPU), and the command path (CMD).
 
-Sample Output:
+	UID     PID    PPID %CPU CMD
+    0       1       0  0.0 /usr/lib/systemd/systemd --switched-root --system --deserialize 17
+    0       2       0  0.0 [kthreadd]
+    0       3       2  0.0 [rcu_gp]
+	...
+```
+
+4. To get user info `ps -u` 
+```
+#ps -u
+
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root        2374  0.0  0.2 427692  7884 tty2     Ssl+ 07:07   0:00 /usr/libexec/gdm-wayland-session --register-session gnome-session
+root        2380  0.0  0.5 1008012 19252 tty2    Sl+  07:07   0:00 /usr/libexec/gnome-session-binary
+root        2429  1.0  9.2 4306576 342708 tty2   Sl+  07:07   8:16 /usr/bin/gnome-shell
+```
+
+5. More
 
 ```
-UID     PID  PPID %CPU CMD
-1000   2176  2145  0.0 /usr/bin/bash
+-e	Displays information about all processes.						ps -e
+-f	Provides full-format listing.									ps -f
+-l	Displays long format listing.									ps -l
+-j	Displays jobs format.											ps -j
+-o	User-defined format.											ps -o pid,comm
+-p	Select by PID.													ps -p 1234
+-t	Select by TTY.													ps -t pts/1
+-u	Select by effective user ID (EUID).								ps -u root
+-x	List processes without controlling terminals (like daemons).	ps -x
+-C	Select by command name.											ps -C bash
+-L	Show threads, possibly with LWP and NLWP columns.				ps -L
+```
+
+6. WRT user `ps -u username`
+```
+#ps -u root 
+PID TTY          TIME CMD
+1 ?        00:00:12 systemd
+2 ?        00:00:00 kthreadd
+3 ?        00:00:00 rcu_gp
 ...
 ```
 
-III. Enhanced Process Summaries
 
-One option:
+
+7. Enhanced Process Summaries `ps aux` & `ps fax`
 
 ```
-ps aux
-```
+#ps aux
 
 This gives a condensed summary of all active processes, including details like user, PID, CPU, and memory usage.
 
-Sample Output:
-
-```
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root         1  0.0  0.1 169560  5892 ?        Ss   Apr10   0:01 /sbin/init
 ...
 ```
 
-Another option:
+
+
 
 ```
-ps fax
-```
+#ps fax
+
 
 This displays the process hierarchy in a tree structure, showing parent-child relationships.
 
-Sample Output:
-
-```
 PID TTY      STAT   TIME COMMAND
   2 ?        S      0:00 [kthreadd]
 /-+- 3951 ?        S      0:07  \_ [kworker/u8:2]
 ...
 ```
 
-```
-ps -o
-```
 
-Customizes the output by specifying column names, tailored for specific requirements.
 
 #### The `top` Command
 
