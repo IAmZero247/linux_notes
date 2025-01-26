@@ -285,7 +285,7 @@ MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.   2372.7 avail Mem
 ...
 ```
 
-### Process life cycle
+## Process life cycle
 
 The life cycle of a process in an operating system is a critical concept. The provided diagram illustrates the various stages a process goes through:
 
@@ -319,7 +319,7 @@ The life cycle of a process in an operating system is a critical concept. The pr
 - The **Exit** state indicates that the process has completed its execution and is ready to be removed from the system.
 - If a process is **Terminated**, it means that an error occurred or an explicit kill command was issued, resulting in the process being forcefully stopped.
 
-### Process Spawning
+## Process Spawning
 
 Process spawning is a fundamental aspect of any operating system. It's the action of creating a new process from an existing one. Whether it's running a command from a terminal or a process creating another, spawning processes is a routine operation in system workflows.
 
@@ -335,12 +335,12 @@ echo "Hello, world!"
 
 This command creates a new process that executes the echo command, resulting in the specified text being printed on the terminal.
 
-### Process Termination
+## Process Termination
 
 To manage system resources effectively, it is sometimes necessary to terminate running processes. Depending on your needs, this can be accomplished in several ways.
 
 #### Terminating Processes by PID
-
+=================================
 Each process, upon its creation, is assigned a unique Process ID (PID). To stop a process using its PID, the `kill` command is used. For instance:
 
 ```bash
@@ -350,7 +350,7 @@ kill 12345
 In this example, a termination signal is sent to the process with PID 12345, instructing it to stop execution.
 
 #### Terminating Processes by Name
-
+==================================
 If you don't know a process's PID, but you do know its name, the `pkill` command is handy. This command allows you to stop a process using its name:
 
 ```bash
@@ -360,7 +360,7 @@ pkill process_name
 In this case, a termination signal is sent to all processes that share the specified name, effectively halting their execution.
 
 #### Specifying Termination Signals
-
+===================================
 The `kill` and `pkill` commands provide the option to specify the type of signal sent to a process. For example, to send a SIGINT signal (equivalent to Ctrl+C), you can use:
 
 ```bash
@@ -371,9 +371,10 @@ Linux supports a variety of signals, each designed for a specific purpose. Some 
 
 | Signal | Value | Description |
 | --- | --- | --- |
-| `SIGHUP` | (1) | Hangup detected on controlling terminal or death of controlling process |
-| `SIGINT` | (2) | Interrupt from keyboard; typically, caused by `Ctrl+C` |
-| `SIGKILL` | (9) | Forces immediate process termination; it cannot be ignored, blocked, or caught |
+| `SIGHUP`  | (1)  | Hangup detected on controlling terminal or death of controlling process |
+| `SIGINT`  | (2)  | Interrupt from keyboard; typically, caused by `Ctrl+C` |
+| `SIGKILL` | (9)  | Forces immediate process termination; it cannot be ignored, blocked, or caught |
+| `SIGTERM` | (15) | Forces immediate process termination; |
 | `SIGSTOP` | (19) | Pauses the process; cannot be ignored |
 | `SIGCONT` | (18) | Resumes paused process |
 
