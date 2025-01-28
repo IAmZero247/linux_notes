@@ -264,6 +264,8 @@ For real-time process monitoring, top command is used. Press Z to set different 
 	This shows a dynamic list of processes, usually sorted by CPU usage. It includes system summary information (like CPU and memory usage) 
 and a detailed list of processes.
 
+	TO navigate from one page to another `Shift+G`
+
 
 ```
 #top
@@ -283,5 +285,34 @@ MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.   2372.7 avail Mem
    2786 root      20   0  732796  38840  31716 S   0.3   1.0   4:19.59 vmtoolsd                                                                                                                                    
   10981 root      20   0  400976  40056   8292 S   0.3   1.1   0:06.84 sssd_kcm         
 ...
+```
+
+Shift+F
+
+```
+ields Management for window 1:Def, whose current sort field is %CPU
+   Navigate with Up/Dn, Right selects for move then <Enter> or Left commits,
+   'd' or <Space> toggles display, 's' sets sort.  Use 'q' or <Esc> to end!
+
+* PID     = Process Id             PGRP    = Process Group Id       OOMs    = OOMEM Score current 
+* USER    = Effective User Name    TTY     = Controlling Tty        ENVIRON = Environment vars    
+* PR      = Priority               TPGID   = Tty Process Grp Id     vMj     = Major Faults delta  
+* NI      = Nice Value             SID     = Session Id             vMn     = Minor Faults delta  
+* VIRT    = Virtual Image (KiB)    nTH     = Number of Threads      USED    = Res+Swap Size (KiB) 
+* RES     = Resident Size (KiB)    P       = Last Used Cpu (SMP)    nsIPC   = IPC namespace Inode 
+* SHR     = Shared Memory (KiB)    TIME    = CPU Time               nsMNT   = MNT namespace Inode 
+* S       = Process Status         SWAP    = Swapped Size (KiB)     nsNET   = NET namespace Inode 
+* %CPU    = CPU Usage              CODE    = Code Size (KiB)        nsPID   = PID namespace Inode 
+* %MEM    = Memory Usage (RES)     DATA    = Data+Stack (KiB)       nsUSER  = USER namespace Inode
+* TIME+   = CPU Time, hundredths   nMaj    = Major Page Faults      nsUTS   = UTS namespace Inode 
+* COMMAND = Command Name/Line      nMin    = Minor Page Faults      LXC     = LXC container name  
+  PPID    = Parent Process pid     nDRT    = Dirty Pages Count      RSan    = RES Anonymous (KiB) 
+  UID     = Effective User Id      WCHAN   = Sleeping in Function   RSfd    = RES File-based (KiB)
+  RUID    = Real User Id           Flags   = Task Flags <sched.h>   RSlk    = RES Locked (KiB)    
+  RUSER   = Real User Name         CGROUPS = Control Groups         RSsh    = RES Shared (KiB)    
+  SUID    = Saved User Id          SUPGIDS = Supp Groups IDs        CGNAME  = Control Group name  
+  SUSER   = Saved User Name        SUPGRPS = Supp Groups Names      NU      = Last Used NUMA node 
+  GID     = Group Id               TGID    = Thread Group Id     
+  GROUP   = Group Name             OOMa    = OOMEM Adjustment 
 ```
 

@@ -85,6 +85,14 @@ The `kill` and `pkill` commands provide the option to specify the type of signal
 
 ```bash
 kill -SIGINT 12345
+
+ex 
+[root@localhost ~]# kill -19 16353
+[root@localhost ~]# kill -18 16353
+[root@localhost ~]# kill -15 16353
+[root@localhost ~]# kill -9 16353
+bash: kill: (16353) - No such process
+
 ```
 
 Linux supports a variety of signals, each designed for a specific purpose. Some common signals include:
@@ -148,6 +156,28 @@ The `ps` command displays a list of currently running processes. To search for p
 
 ```bash
 ps -ef | grep process_name
+
+
+lab 
+----
+
+open 2 termainals
+in 2nd terminal  #ping localhost
+
+in 1st terminal 
+
+#pidof ping 
+16353
+
+#ps -aux | grep ping
+root        2651  0.0  0.3 598588 11868 tty2     Sl+  Jan27   0:04 /usr/libexec/gsd-housekeeping
+root       16353  0.0  0.1 244480  3952 pts/1    S+   09:36   0:00 ping localhost
+root       16362  0.0  0.0 222008  1176 pts/0    S+   09:37   0:00 grep --color=auto ping
+
+to get details
+#ps -P 16353
+PID PSR TTY      STAT   TIME COMMAND
+16353   2 pts/1    S+     0:00 ping localhost
 ```
 
 searches and displays all processes containing the specified name (process_name in this example). Here, ps -ef lists all processes, and grep process_name filters the list to show only the processes with the specified name.
@@ -158,6 +188,10 @@ The pgrep command offers a quick and direct method to search for processes by th
 
 ```bash
 pgrep chromium
+
+#pgrep ping 
+16353
+
 ```
 
 This command displays the PIDs for all instances of chromium currently running on the system.
